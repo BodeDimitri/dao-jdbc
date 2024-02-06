@@ -27,6 +27,10 @@ public class Seller implements Serializable {
 		this.department = department;
 	}
 
+	public Seller() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Integer getId() {
 		return Id;
 	}
@@ -67,7 +71,6 @@ public class Seller implements Serializable {
 		this.baseSalary = baseSalary;
 	}
 
-	
 
 	@Override
 	public int hashCode() {
