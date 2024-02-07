@@ -69,7 +69,8 @@ public class SellerDaoImpJDBC implements SellerDao {
 	public void update(Seller obj) {
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement("UPDATE seller SET Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? WHERE Id = ?");
+			st = conn.prepareStatement("UPDATE seller "
+					+ "SET Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? WHERE Id = ?");
 
 			
 			st.setString(1, obj.getName());
@@ -112,12 +113,12 @@ public class SellerDaoImpJDBC implements SellerDao {
 		ResultSet rs = null;
 		
 		try {
-			st = conn.prepareStatement("SELECT seller.*,department.Name as DepName\r\n"
-					+ "FROM seller INNER JOIN department\r\n"
-					+ "ON seller.DepartmentId = department.Id\r\n"
+			st = conn.prepareStatement("SELECT seller.*,department.Name as DepName "
+					+ "FROM seller INNER JOIN department "
+					+ "ON seller.DepartmentId = department.Id "
 					+ "WHERE seller.Id = ?"
 					);
-					
+			
 			st.setInt(1, id);
 			rs = st.executeQuery();
 			
@@ -199,8 +200,8 @@ public class SellerDaoImpJDBC implements SellerDao {
 		ResultSet rs = null;
 		
 		try {
-			st = conn.prepareStatement("SELECT seller.*,department.Name as DepName "
-					+ "FROM seller INNER JOIN department "
+			st = conn.prepareStatement("SELECT seller.* , department.Name as DepName "
+					+ "FROM seller INNER JOIN department  "
 					+ "ON seller.DepartmentId = department.Id "
 					+ "WHERE seller.Id = ? "
 					+ "ORDER BY Name");
